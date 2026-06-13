@@ -25,7 +25,7 @@ export default function PickDate() {
   const isKawaii = theme === 'kawaii';
 
   const titles = {
-    romantic: { emoji: '📅', title: 'When shall we meet?', sub: 'Pick a date and I'll be counting down the days 💕' },
+    romantic: { emoji: '📅', title: 'When shall we meet?', sub: 'Pick a date and I will be counting down the days 💕' },
     kawaii: { emoji: '🎀', title: 'Pick our date!! 🥺', sub: 'Which day works for you, bestie? ✨' },
     retro: { emoji: '📆', title: 'SELECT DATE.EXE', sub: '>>> INPUT DATE COORDINATES <<<' },
     minimalist: { emoji: '', title: 'Choose a date', sub: 'When would you like to meet?' },
