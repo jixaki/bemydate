@@ -2,8 +2,11 @@
   "name": "ask-a-date",
   "version": "1.0.0",
   "dependencies": {
-    "mongoose": "^8.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^8.24.0",
     "nanoid": "^3.3.7",
-    "nodemailer": "^6.9.7"
+    "nodemailer": "^6.10.1"
   }
 }
