@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getDateRequest } from '../api';
 
@@ -36,9 +36,11 @@ const THEME_CONTENT = {
 export default function Card() {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+
   const [noPos, setNoPos] = useState({ x: null, y: null });
   const [noAttempts, setNoAttempts] = useState(0);
 
@@ -60,31 +62,39 @@ export default function Card() {
 
   const handleYes = () => navigate(`/pick-date/${id}`);
 
-  if (loading) return (
-    <div className="page">
-      <p style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.2rem', color: '#c0516b' }}>
-        Loading your surprise... 🌹
-      </p>
-    </div>
-  );
-
-  if (notFound) return (
-    <div className="page">
-      <div className="card">
-        <p style={{ fontSize: '1.1rem' }}>💔 This date card doesn't exist or has expired.</p>
+  if (loading) {
+    return (
+      <div className="page">
+        <p>Loading your surprise... 🌹</p>
       </div>
-    </div>
-  );
+    );
+  }
 
-  const theme = data.theme || 'romantic';
+  if (notFound) {
+    return (
+      <div className="page">
+        <div className="card">
+          <p>💔 This date card doesn't exist or has expired.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const theme = data?.theme || 'romantic';
   const content = THEME_CONTENT[theme];
   const isRetro = theme === 'retro';
   const isKawaii = theme === 'kawaii';
 
   const noMessages = [
-    'Nice try! 😏', 'Not so fast! 🏃', 'Come back here! 💨',
-    'You can\'t escape! 😂', 'Hehehe~ 😈', 'The cursor is mine now 🖱️',
-    'CATCH ME IF YOU CAN', 'Nope, not today!', 'You\'re getting warmer... to YES 🔥',
+    'Nice try! 😏',
+    'Not so fast! 🏃',
+    'Come back here! 💨',
+    'You can\'t escape! 😂',
+    'Hehehe~ 😈',
+    'The cursor is mine now 🖱️',
+    'CATCH ME IF YOU CAN',
+    'Nope, not today!',
+    'You\'re getting warmer... to YES 🔥',
   ];
 
   return (
@@ -104,37 +114,35 @@ export default function Card() {
       }}
     >
       {isRetro && (
-        <div style={{
-          position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0,
-          background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px)',
-        }} />
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            pointerEvents: 'none',
+            zIndex: 0,
+            background:
+              'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px)',
+          }}
+        />
       )}
 
       <div className="card animate-fade-in" style={{ position: 'relative', zIndex: 1 }}>
         {content.deco && <div className="deco">{content.deco}</div>}
 
-        <h1 className={isRetro ? '' : 'animate-heart'} style={{ marginBottom: 16 }}>
-          {content.title(data.receiverName)}
+        <h1 style={{ marginBottom: 16 }}>
+          {content.title(data?.receiverName || '...')}
         </h1>
+
         <p style={{ marginBottom: 40 }}>{content.subtitle}</p>
 
         {noAttempts > 0 && (
-          <p style={{
-            fontSize: '0.85rem', marginBottom: 20, opacity: 0.7,
-            color: isRetro ? '#00e5ff' : '#c0516b',
-            fontStyle: isRetro ? 'normal' : 'italic',
-            fontFamily: isRetro ? "'Press Start 2P', monospace" : 'inherit',
-          }}>
+          <p style={{ fontSize: '0.85rem', marginBottom: 20, opacity: 0.7 }}>
             {noMessages[Math.min(noAttempts - 1, noMessages.length - 1)]}
           </p>
         )}
 
-        <div style={{ display: 'flex', gap: 16, justifyContent: 'center', alignItems: 'center' }}>
-          <button
-            className="btn"
-            onClick={handleYes}
-            style={{ fontSize: isKawaii ? '1.1rem' : '1rem', padding: '16px 32px' }}
-          >
+        <div style={{ display: 'flex', gap: 16, justifyContent: 'center' }}>
+          <button className="btn" onClick={handleYes}>
             {content.yesLabel}
           </button>
 
@@ -147,9 +155,7 @@ export default function Card() {
               position: noPos.x !== null ? 'fixed' : 'relative',
               left: noPos.x !== null ? noPos.x : 'auto',
               top: noPos.y !== null ? noPos.y : 'auto',
-              transition: 'left 0.1s, top 0.1s',
               zIndex: 999,
-              fontSize: '0.9rem',
               opacity: noAttempts > 5 ? 0.3 : 1,
               userSelect: 'none',
             }}

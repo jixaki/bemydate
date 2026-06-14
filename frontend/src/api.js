@@ -1,12 +1,18 @@
-import axios from 'axios';
+import axios from "axios";
 
-const BASE = '/api';
+const BASE_URL = "http://localhost:5000";
 
-export const createDateRequest = (data) =>
-  axios.post(`${BASE}/date-request`, data);
+// CREATE DATE REQUEST
+export const createDateRequest = (data) => {
+  return axios.post(`${BASE_URL}/api/date-request`, data);
+};
 
-export const getDateRequest = (id) =>
-  axios.get(`${BASE}/date-request-get/${id}`);
+// GET DATE REQUEST
+export const getDateRequest = (id) => {
+  return axios.get(`${BASE_URL}/api/date-request/${id}`);
+};
 
-export const respondToDateRequest = (id, data) =>
-  axios.put(`${BASE}/date-request-respond/${id}`, data);
+// RESPOND TO DATE REQUEST
+export const respondToDateRequest = (id, data) => {
+  return axios.post(`${BASE_URL}/api/date-request/${id}/respond`, data);
+};
