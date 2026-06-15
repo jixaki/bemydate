@@ -36,10 +36,10 @@ export default function LinkGenerated() {
         minHeight: '100vh'
       }}
     >
-      <div className="card animate-fade-in" style={{ maxWidth: 520 }}>
+      <div className="card animate-fade-in" style={{ maxWidth: 550 }}>
         <div style={{ fontSize: '3rem', marginBottom: 16 }}>💌</div>
 
-        <h1 style={{ fontFamily: 'Playfair Display, serif', color: '#c0516b' }}>
+        <h1 style={{ fontFamily: 'Spicy Rice, serif', color: '#c0516b' }}>
           Your card is ready!
         </h1>
 
