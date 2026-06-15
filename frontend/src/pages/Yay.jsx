@@ -42,7 +42,7 @@ export default function Yay() {
     romantic: { emoji: '💖', title: 'It\'s official — it\'s a date!', sub: 'Get ready for the most magical date 🌹', extra: '✨ Every love story is beautiful, but yours is my favourite ✨' },
     kawaii: { emoji: '🎀', title: 'OMG IT\'S A DATE!!!', sub: 'YAYYYY!! This is the BEST day ever!! 🍓', extra: '🌸 You said yes and now everything is perfect 🌸' },
     retro: { emoji: '🕹️', title: 'DATE CONFIRMED ✓', sub: 'MISSION ACCEPTED. PREPARE FOR OPTIMAL DATE SEQUENCE.', extra: '[ ACHIEVEMENT UNLOCKED: SAID YES ] 🏆' },
-    minimalist: { emoji: '🤍', title: 'It\'s a date.', sub: 'Looking forward to it.', extra: 'Good things take time. This will be one of them.' },
+    minimalist: { emoji: '🤍', title: 'It\'s a date.', sub: ' Looking forward to it.', extra: 'Good things take time. This will be one of them.' },
   };
   const c = closings[theme] || closings.romantic;
 
@@ -67,7 +67,7 @@ export default function Yay() {
         )}
 
         {state?.foodVibe && (
-          <div style={{ display: 'inline-block', background: 'var(--bg2, #fff0f3)', borderRadius: 12, padding: '10px 20px', margin: '0 0 24px', fontSize: '0.95rem', color: 'var(--accent, #c0516b)', fontWeight: 600 }}>
+          <div style={{ display: 'inline-block', background: 'var(--bg2, #fff0f3)', borderRadius: 12, padding: '10px 20px', margin: '0 10px 24px', fontSize: '0.95rem', color: 'var(--accent, #c0516b)', fontWeight: 600 }}>
             {state.foodVibe}
           </div>
         )}

@@ -75,38 +75,39 @@ export default function Home() {
           ))}
         </div>
 
-        {/* FORM */}
-        <input
-          name="askerName"
-          placeholder="Your Name"
-          value={form.askerName}
-          onChange={handleChange}
-        />
+        <div className="input-group">
+          {/* FORM */}
+          <input
+            name="askerName"
+            placeholder="Your Name"
+            value={form.askerName}
+            onChange={handleChange}
+          />
 
-        <input
-          name="askerEmail"
-          placeholder="Your Email"
-          value={form.askerEmail}
-          onChange={handleChange}
-        />
+          <input
+            name="askerEmail"
+            placeholder="Your Email"
+            value={form.askerEmail}
+            onChange={handleChange}
+          />
 
-        <input
-          name="receiverName"
-          placeholder="Their Name"
-          value={form.receiverName}
-          onChange={handleChange}
-        />
+          <input
+            name="receiverName"
+            placeholder="Their Name"
+            value={form.receiverName}
+            onChange={handleChange}
+          />
 
-        <input
-          name="receiverEmail"
-          placeholder="Their Email"
-          value={form.receiverEmail}
-          onChange={handleChange}
-        />
+          <input
+            name="receiverEmail"
+            placeholder="Their Email"
+            value={form.receiverEmail}
+            onChange={handleChange}
+          />
 
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-
-        <button onClick={handleSubmit} disabled={loading}>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+        </div>
+        <button className="btn"onClick={handleSubmit} disabled={loading}>
           {loading ? 'Creating...' : 'Generate Card 💌'}
         </button>
 

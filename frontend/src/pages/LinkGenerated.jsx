@@ -55,7 +55,7 @@ export default function LinkGenerated() {
 
         <button
           className="btn btn-outline"
-          style={{ marginTop: 12 }}
+          style={{ margin: 10 }}
           onClick={() => navigate('/')}
         >
           Make another 🌹
