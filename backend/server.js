@@ -42,7 +42,7 @@ app.post("/api/date-request", async (req, res) => {
 
     res.json({
       message: "Date request received 🚀",
-      link: `http://localhost:5173/card/${fakeId}`,
+      link: `https://hibemydate.netlify.app/card/${fakeId}`,
       data: {
         id: fakeId,
         askerName,
