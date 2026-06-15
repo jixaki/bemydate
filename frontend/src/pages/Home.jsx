@@ -14,7 +14,7 @@ export default function Home() {
 
   const [form, setForm] = useState({
     askerName: '',
-    askerEmail: '',
+    // askerEmail: '',
     receiverName: '',
     // receiverEmail: '',
     theme: 'romantic',
@@ -29,9 +29,9 @@ export default function Home() {
   const handleSubmit = async () => {
     setError('');
 
-    const { askerName, askerEmail, receiverName } = form;
+    const { askerName, receiverName } = form;
 
-    if (!askerName || !askerEmail || !receiverName) {
+    if (!askerName || !receiverName) {
       setError('Please fill in all fields!');
       return;
     }
