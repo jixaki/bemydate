@@ -39,7 +39,7 @@ export default function Yay() {
   const isKawaii = theme === 'kawaii';
 
   const closings = {
-    romantic: { emoji: '💖', title: 'It\'s official — it\'s a date!', sub: 'Get ready for the most magical evening 🌹 An email with all the details has been sent to both of you!', extra: '✨ Every love story is beautiful, but yours is my favourite ✨' },
+    romantic: { emoji: '💖', title: 'It\'s official — it\'s a date!', extra: '✨ Every love story is beautiful, but yours is my favourite ✨' },
     kawaii: { emoji: '🎀', title: 'OMG IT\'S A DATE!!!', sub: 'YAYYYY!! This is the BEST day ever!! 🍓 Check your emails uwu 💌', extra: '🌸 You said yes and now everything is perfect 🌸' },
     retro: { emoji: '🕹️', title: 'DATE CONFIRMED ✓', sub: 'MISSION ACCEPTED. EMAIL SENT TO ALL PARTIES. PREPARE FOR OPTIMAL DATE SEQUENCE.', extra: '[ ACHIEVEMENT UNLOCKED: SAID YES ] 🏆' },
     minimalist: { emoji: '🤍', title: 'It\'s a date.', sub: 'You\'ve both been notified by email. Looking forward to it.', extra: 'Good things take time. This will be one of them.' },
