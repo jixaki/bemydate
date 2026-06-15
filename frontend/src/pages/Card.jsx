@@ -110,7 +110,7 @@ export default function Card() {
           ? '#fafafa'
           : 'radial-gradient(ellipse at 60% 0%, #ffd6e0 0%, #fff0f3 60%)',
         position: 'relative',
-        overflow: isRetro ? 'hidden' : 'visible',
+        overflow: 'hidden',
       }}
     >
       {isRetro && (
