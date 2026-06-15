@@ -7,10 +7,14 @@ const DateRequestSchema = new mongoose.Schema(
     receiverName: String,
     receiverEmail: String,
     theme: String,
+    chosenDate: String,
+    foodVibe: String,
+    responded: {
+      type: Boolean,
+      default: false,
+    },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("DateRequest", DateRequestSchema);
