@@ -1,5 +1,6 @@
 const axios = require("axios");
-
+console.log("BREVO_API_KEY exists:", !!process.env.BREVO_API_KEY);
+console.log("BREVO_API_KEY value:", process.env.BREVO_API_KEY);
 const sendDateAcceptedEmail = async (
   askerEmail,
   askerName,
