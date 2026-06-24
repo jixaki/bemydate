@@ -99,10 +99,24 @@ app.post("/api/date-request/:id/respond", async (req, res) => {
       return res.status(404).json({ error: "Not found" });
     }
 
+    // Send response first
     res.json({
       message: "Response saved 💕",
       data: updated,
     });
+
+    // Send email in background
+    try {
+      await sendDateAcceptedEmail(
+        updated.askerEmail,
+        updated.askerName,
+        updated.receiverName,
+        chosenDate,
+        foodVibe
+      );
+    } catch (emailError) {
+      console.error("Email error:", emailError);
+    }
 
   } catch (error) {
     console.error(error);
