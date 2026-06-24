@@ -18,6 +18,10 @@ const sendDateAcceptedEmail = async (
   try {
     console.log("EMAIL_USER:", process.env.EMAIL_USER);
     console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
+    console.log("Sending email to:", askerEmail);
+
+    await transporter.verify();
+    console.log("SMTP VERIFIED");
 
     const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
@@ -25,7 +29,6 @@ const sendDateAcceptedEmail = async (
       subject: "Your date request was accepted! 💕",
       html: `
         <h2>Good news, ${askerName}! 💌</h2>
-
         <p><strong>${receiverName}</strong> accepted your date invitation!</p>
 
         <p>
@@ -37,7 +40,7 @@ const sendDateAcceptedEmail = async (
       `,
     });
 
-    console.log("Email sent successfully:", info.messageId);
+    console.log("EMAIL SENT:", info.messageId);
 
   } catch (error) {
     console.error("EMAIL ERROR:", error);
