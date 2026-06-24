@@ -14,9 +14,9 @@ export default function Home() {
 
   const [form, setForm] = useState({
     askerName: '',
-    // askerEmail: '',
+    askerEmail: '',
     receiverName: '',
-    // receiverEmail: '',
+    receiverEmail: '',
     theme: 'romantic',
   });
 
@@ -86,12 +86,12 @@ export default function Home() {
             onChange={handleChange}
           />
 
-          {/* <input
+          <input
             name="askerEmail"
             placeholder="Your Email"
             value={form.askerEmail}
             onChange={handleChange}
-          /> */}
+          />
 
           <input
             name="receiverName"
@@ -100,12 +100,12 @@ export default function Home() {
             onChange={handleChange}
           />
 
-          {/* <input
+          <input
             name="receiverEmail"
             placeholder="Their Email"
             value={form.receiverEmail}
             onChange={handleChange}
-          /> */}
+          />
 
           {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
