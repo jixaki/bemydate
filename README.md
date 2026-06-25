@@ -1,106 +1,194 @@
-# 💌 Ask a Date — Netlify Deployment
+# 💌 BeMyDate
 
-A fun MERN-style app deployed entirely on **Netlify** — React frontend + Netlify Functions (serverless) backend + MongoDB Atlas.
+BeMyDate is a fun and interactive MERN-stack web application that allows users to create personalized date invitations and send them to someone special.
 
----
-
-## 📁 Project Structure
-
-```
-ask-a-date/
-├── netlify.toml                        ← Build config + redirect rules
-├── package.json                        ← Root deps for Netlify Functions
-├── netlify/
-│   └── functions/
-│       ├── lib/
-│       │   ├── connectDB.js            ← Mongoose connection (cached)
-│       │   ├── DateRequest.js          ← Mongoose model
-│       │   └── mailer.js               ← Nodemailer email sender
-│       ├── date-request.js             ← POST   /api/date-request
-│       ├── date-request-get.js         ← GET    /api/date-request-get/:id
-│       └── date-request-respond.js     ← PUT    /api/date-request-respond/:id
-└── frontend/
-    ├── src/
-    │   ├── api.js                      ← Centralized API calls
-    │   ├── pages/  (Home, Card, PickDate, FoodVibe, Yay, LinkGenerated)
-    │   ├── index.css
-    │   └── main.jsx
-    ├── index.html
-    └── vite.config.js
-```
+The recipient receives a unique invitation link where they can select a preferred date and food vibe. Once they respond, the original sender receives an email notification with all the details.
 
 ---
 
-## 🚀 Deploy to Netlify
+## ✨ Features
 
-### Step 1 — Set up MongoDB Atlas
-1. Go to [mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas) → create a free cluster
-2. Create a database user and whitelist `0.0.0.0/0` (all IPs) under Network Access
-3. Copy your **connection string**: `mongodb+srv://user:pass@cluster.mongodb.net/ask-a-date`
+### 💖 Create Personalized Date Invitations
 
-### Step 2 — Set up Gmail App Password
-1. Go to your Google Account → **Security** → **2-Step Verification** → **App Passwords**
-2. Generate a password for "Mail" → copy it
+* Sender name & email
+* Recipient name & email
+* Multiple invitation themes
+* Unique invitation links
 
-### Step 3 — Push to GitHub
+### 📅 Date Selection
+
+Recipients can:
+
+* View the invitation
+* Select a preferred date
+* Confirm their response
+
+### 🍽️ Food Vibe Selection
+
+Recipients can choose from:
+
+* Fancy Dinner 🥂
+* Street Food 🌮
+* Cozy Café ☕
+* Surprise Me! 🎁
+
+### 📧 Email Notifications
+
+When an invitation is accepted:
+
+* Sender receives an email notification
+* Includes selected date
+* Includes selected food vibe
+
+### 🎨 Theme Support
+
+Current themes:
+
+* Romantic
+* Kawaii
+* Retro
+* Minimalist
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React
+* React Router
+* Axios
+* Vite
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+
+### Services
+
+* MongoDB Atlas
+* Render
+* Netlify
+* Brevo Email API
+
+---
+
+## 📂 Project Structure
+
+```text
+bemydate/
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── backend/
+│   ├── models/
+│   ├── server.js
+│   ├── connectDB.js
+│   ├── sendEmail.js
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+## ⚙️ Environment Variables
+
+### Backend (.env)
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+PORT=5000
+
+BREVO_API_KEY=your_brevo_api_key
+
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_email_app_password
+```
+
+---
+
+## 🚀 Local Installation
+
+### Clone Repository
+
 ```bash
-git init
-git add .
-git commit -m "initial commit"
-git remote add origin https://github.com/yourname/ask-a-date.git
-git push -u origin main
+git clone https://github.com/yourusername/bemydate.git
+cd bemydate
 ```
 
-### Step 4 — Connect to Netlify
-1. Go to [netlify.com](https://netlify.com) → **Add new site** → **Import from Git**
-2. Select your repo
-3. Build settings are auto-detected from `netlify.toml`
-
-### Step 5 — Add Environment Variables
-In Netlify → **Site Settings** → **Environment Variables**, add:
-
-| Key | Value |
-|-----|-------|
-| `MONGODB_URI` | `mongodb+srv://...` |
-| `EMAIL_USER` | `your_gmail@gmail.com` |
-| `EMAIL_PASS` | your Gmail app password |
-| `FRONTEND_URL` | `https://your-site.netlify.app` |
-
-### Step 6 — Deploy!
-Trigger a deploy from Netlify dashboard or push to GitHub.
-
----
-
-## 💻 Local Development
-
-Install the Netlify CLI to run functions locally:
+### Backend Setup
 
 ```bash
-npm install -g netlify-cli
-
-# Root level — install function deps
+cd backend
 npm install
-
-# Frontend deps
-cd frontend && npm install && cd ..
-
-# Create local env file
-cp .env.example .env  # fill in your values
-
-# Run everything together
-netlify dev
+npm run start
 ```
 
-Open [http://localhost:8888](http://localhost:8888)
+### Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ---
 
-## 🔗 API Routes (as Netlify Functions)
+## 🌍 Deployment
 
-| Method | URL | Function file |
-|--------|-----|---------------|
-| POST | `/api/date-request` | `date-request.js` |
-| GET | `/api/date-request-get/:id` | `date-request-get.js` |
-| PUT | `/api/date-request-respond/:id` | `date-request-respond.js` |
+### Frontend
 
-Netlify rewrites `/api/*` → `/.netlify/functions/*` via `netlify.toml`.
+Deployed on Netlify
+
+### Backend
+
+Deployed on Render
+
+### Database
+
+MongoDB Atlas
+
+### Email Service
+
+Brevo Transactional Email API
+
+---
+
+## 📧 Email Flow
+
+1. User creates a date invitation
+2. Invitation is stored in MongoDB
+3. Unique link is generated
+4. Recipient opens invitation
+5. Recipient selects date and food vibe
+6. Backend updates request
+7. Brevo sends email notification to sender
+
+---
+
+## 🔮 Future Enhancements
+
+* GIF picker for invitations
+* Image upload support
+* Dynamic social media previews
+* Custom invitation backgrounds
+* WhatsApp sharing
+* Email templates
+* User dashboard
+* Date analytics
+
+---
+
+## 👨‍💻 Author
+
+Created by Jess
+
+Built with ❤️ using React, Node.js, Express, MongoDB, and Brevo.
