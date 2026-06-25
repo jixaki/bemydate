@@ -5,7 +5,6 @@ const DateRequestSchema = new mongoose.Schema(
     askerName: String,
     askerEmail: String,
     receiverName: String,
-    receiverEmail: String,
     theme: String,
     chosenDate: String,
     foodVibe: String,

@@ -16,7 +16,6 @@ export default function Home() {
     askerName: '',
     askerEmail: '',
     receiverName: '',
-    receiverEmail: '',
     theme: 'romantic',
   });
 
@@ -95,15 +94,8 @@ export default function Home() {
 
           <input
             name="receiverName"
-            placeholder="Their Name"
+            placeholder="Receiver's Name"
             value={form.receiverName}
-            onChange={handleChange}
-          />
-
-          <input
-            name="receiverEmail"
-            placeholder="Their Email"
-            value={form.receiverEmail}
             onChange={handleChange}
           />
 

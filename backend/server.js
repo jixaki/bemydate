@@ -37,7 +37,6 @@ app.post("/api/date-request", async (req, res) => {
       askerName,
       askerEmail,
       receiverName,
-      receiverEmail,
       theme,
     } = req.body;
 
@@ -45,7 +44,6 @@ app.post("/api/date-request", async (req, res) => {
       askerName,
       askerEmail,
       receiverName,
-      receiverEmail,
       theme,
     });
 
